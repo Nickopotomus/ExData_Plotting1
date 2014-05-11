@@ -19,8 +19,9 @@ houseData$Time <- strptime(paste(houseData$Date,houseData$Time),format="%d/%m/%Y
 houseData$Date <- as.Date(houseData$Date,format="%d/%m/%Y")
 
 png(filename="plot4.png",width=480,height=480,units="px")
-par(mfrow = c(2,2))
+
 with(houseData, {
+  par(mfrow = c(2,2))
   plot(houseData$Time,houseData$Global_active_power,type="l",ylab="Global Active Power",
        xlab="")
   plot(houseData$Time,houseData$Voltage,type="l",ylab="Voltage",
@@ -32,7 +33,7 @@ with(houseData, {
     lines(houseData$Time,houseData$Sub_Metering_2,type="l",col="red")
     lines(houseData$Time,houseData$Sub_Metering_3,type="l",col="blue")
     legend("topright", legend = c("Sub_metering_1","Sub_metering_2","Sub_metering_3"),
-           col=c("black","red","blue"),lwd=2,box.col="white",bty="n")    
+           col=c("black","red","blue"),lwd=2,bty="n")    
   })
   plot(houseData$Time,houseData$Global_reactive_power,type="l",ylab="Global_reactive_power",
        xlab="datetime")
